@@ -97,7 +97,7 @@
                                     <transport.host>127.0.0.1</transport.host>
                                 </env>
                                 <ports>
-                                    <port>${es.host}:9200:9200</port>
+                                    <port>${es.host}:${es.port}:9200</port>
                                 </ports>
                                 <log>
                                     <prefix>ES</prefix>
@@ -105,12 +105,12 @@
                                 </log>
                                 <wait>
                                     <http>
-                                        <url>http://${es.host}:9200</url>
+                                        <url>http://${es.host}:${es.port}</url>
                                         <method>HEAD</method>
                                         <!-- X-Pack Security, yay! -->
                                         <status>401</status>
                                     </http>
-                                    <time>20000</time>
+                                    <time>30000</time>
                                 </wait>
                             </run>
                         </image>
@@ -140,7 +140,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <es.host>${es.host}</es.host>
-                        <es.port>9200</es.port>
+                        <es.port>${es.port}</es.port>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
